@@ -7,7 +7,13 @@ const nextConfig = {
       'garagefinder.blob.core.windows.net',
     ],
   },
-  webpack: (config, { isServer }) => {
+  rewrites: [
+    {
+      source: '/(.*)',
+      destination: '/',
+    },
+  ],
+  webpack: (config) => {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.('.svg')
@@ -28,10 +34,6 @@ const nextConfig = {
     );
 
     fileLoaderRule.exclude = /\.svg$/i;
-
-    if (isServer) {
-      require('./scripts/generate-sitemap')
-    }
 
     return config;
   },
