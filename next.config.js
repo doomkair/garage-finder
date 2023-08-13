@@ -7,13 +7,6 @@ const nextConfig = {
       'garagefinder.blob.core.windows.net',
     ],
   },
-  rewrites: [
-    {
-      source: '/(.*)',
-      destination: '/',
-    },
-  ],
-
   webpack: (config, { isServer }) => {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
