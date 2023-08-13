@@ -90,7 +90,7 @@ export default function HomePage() {
       </section>
 
       <section className="mt-20">
-        <Typography.Title level={2} className="text-center mb-10">
+        <Typography.Title level={2} className="text-center">
           Đề xuất cho bạn
         </Typography.Title>
 
