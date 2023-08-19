@@ -173,7 +173,12 @@ export function Header({ className }: HeaderProps) {
             <div
               tabIndex={0}
               role="button"
-              className="rounded-full p-2 flex items-center justify-center w-4 h-4 border-slate-100 shadow-md"
+              className={twcx(
+                'rounded-full p-2 flex items-center justify-center w-4 h-4 border-slate-100 shadow-md',
+                {
+                  ['hidden']: user?.role === 'STAFF',
+                }
+              )}
               onMouseDown={() => push('/manage/chat')}
             >
               <EnvelopIcon className="text-xl text-neutral-700 cursor-pointer" />
