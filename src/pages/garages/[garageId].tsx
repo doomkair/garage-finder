@@ -181,7 +181,8 @@ export default function GarageDetailPage() {
           await addOrderWithoutCar({
             body: {
               garageId: Number(garageId),
-              name,
+              name: user.fullName,
+              // email: user.email,
               phoneNumber: phone,
               verificationCode: verifyCode,
               brandCarID: brand,
@@ -353,7 +354,7 @@ export default function GarageDetailPage() {
           <Skeleton active loading={!!user && fetchingMyCars}>
             <div className="p-6 border border-neutral-400 border-solid rounded-lg w-full box-border flex flex-col gap-4 mt-16">
               <Form form={form} layout="vertical" onFinish={onFinish}>
-                {!hasCar && (
+                {!hasCar && !hasLogin && (
                   <Form.Item
                     label="Họ Tên"
                     name="name"
@@ -392,7 +393,7 @@ export default function GarageDetailPage() {
                   <Input />
                 </Form.Item>
 
-                {!hasCar && (
+                {!hasCar && !hasLogin && (
                   <Form.Item
                     label="Email"
                     rules={[requiredRule(), emailRule()]}
