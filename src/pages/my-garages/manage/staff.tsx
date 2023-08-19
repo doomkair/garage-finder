@@ -245,7 +245,7 @@ export default function GarageStaffManagementPage() {
                         await refetch();
                       }}
                     >
-                      {item.status === 'block' ? 'Open' : 'Block'}
+                      {item.status === 'block' ? 'Mở khóa' : 'Khóa'}
                       <StopOutlined />
                     </Button>
 
