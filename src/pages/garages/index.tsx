@@ -48,9 +48,9 @@ export default function GaragesPage() {
   const brands = Form.useWatch(['brands'], form);
 
   const [keyword, setKeyword] = useState('');
-  const pagination = usePagination({ currentPage: 1, pageSize: 10000 });
+  const pagination = usePagination({ currentPage: 1, pageSize: 9 });
 
-  const { data: garages, isLoading: fetchingGarages } = useGetGaragesApi({
+  const { data, isLoading: fetchingGarages } = useGetGaragesApi({
     variables: {
       body: {
         keyword,
@@ -62,6 +62,8 @@ export default function GaragesPage() {
       },
     },
   });
+
+  const { garages, total } = data ?? {};
 
   const { data: servicesResponseData, isLoading: fetchingServices } =
     useGetServicesApi();
@@ -170,7 +172,7 @@ export default function GaragesPage() {
         <div className="flex flex-col grow">
           <Skeleton active loading={fetchingGarages}>
             <div className="grid grid-cols-3 gap-x-6 gap-y-8">
-              {garages?.map((garage) => (
+              {garages?.map?.((garage) => (
                 <GarageCard
                   key={garage.garageID}
                   id={garage.garageID}
@@ -187,8 +189,7 @@ export default function GaragesPage() {
 
             <Pagination
               className="mt-10 text-center"
-              // total={pagination.totalItem}
-              total={50}
+              total={total}
               current={pagination.currentPage}
               onChange={(pageNumber) => pagination.goPage(pageNumber)}
             />

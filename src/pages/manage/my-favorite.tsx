@@ -16,7 +16,7 @@ export default function MyFavoritePage() {
       <Content className="flex flex-col pr-6 pl-10">
         <Skeleton active loading={isLoading}>
           <div className="grow grid grid-cols-3 gap-x-6 gap-y-8">
-            {garages?.map((garage) => (
+            {garages?.map?.((garage) => (
               <GarageCard
                 key={garage.garageID}
                 id={garage.garageID}
