@@ -4,6 +4,7 @@ import { Button, DatePicker, Form, Input, Typography } from 'antd';
 import { Dayjs } from 'dayjs';
 import { first, last } from 'lodash-es';
 import { useRouter } from 'next/router';
+import { geocodeByPlaceId } from 'react-google-places-autocomplete';
 
 import { useAddGarageApi } from '@/api';
 import {
@@ -55,23 +56,30 @@ export default function AddGaragePage() {
 
   const onFinish = async () => {
     const values = form.getFieldsValue();
-
-    addGarage({
-      body: {
-        addressDetail: values.detailAddress,
-        brandsID: values.carCompanies,
-        categoriesID: values.services,
-        openTime: first(values.openTime)?.format('hh:mm A'),
-        closeTime: last(values.openTime)?.format('hh:mm A'),
-        provinceID: first(values.address),
-        districtsID: last(values.address),
-        emailAddress: values.email,
-        garageName: values.name,
-        phoneNumber: values.phone,
-        imageLink: [''],
-        thumbnail: values.thumbnail,
-      },
-    });
+    try {
+      const { place_id } = JSON.parse(values?.detailAddress).value;
+      const [{ geometry }] = await geocodeByPlaceId(place_id);
+      await addGarage({
+        body: {
+          addressDetail: values.detailAddress,
+          brandsID: values.carCompanies,
+          categoriesID: values.services,
+          openTime: first(values.openTime)?.format('hh:mm A'),
+          closeTime: last(values.openTime)?.format('hh:mm A'),
+          provinceID: first(values.address),
+          districtsID: last(values.address),
+          emailAddress: values.email,
+          garageName: values.name,
+          phoneNumber: values.phone,
+          imageLink: [''],
+          thumbnail: values.thumbnail,
+          latAddress: geometry.location.lat(),
+          lngAddress: geometry.location.lng(),
+        },
+      });
+    } catch (error) {
+      showError(error);
+    }
   };
 
   return (
