@@ -12,12 +12,14 @@ import { ManageGarageLayout } from '@/layouts';
 
 function AddModalContent(props: { onCancel: () => void }) {
   const { onCancel } = props;
+  const [form] = Form.useForm();
 
   const { query } = useRouter();
   const { mutateAsync: addService, isLoading } = useAddService();
 
   return (
     <Form
+      form={form}
       layout="vertical"
       onFinish={async (values) => {
         await addService({
@@ -29,6 +31,7 @@ function AddModalContent(props: { onCancel: () => void }) {
           },
         });
 
+        form.resetFields();
         onCancel();
       }}
     >
