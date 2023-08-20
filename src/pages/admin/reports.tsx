@@ -47,7 +47,7 @@ export default function AdminReportPage() {
         loading={isLoading}
         dataSource={reports}
         columns={[
-          { title: 'STT', render: (_, __, ix) => ix },
+          { title: 'STT', render: (_, __, ix) => ix + 1 },
           { title: 'Garage bị tố cáo', render: (_, item) => item.garageName },
           {
             title: 'Số điện thoại garage',
