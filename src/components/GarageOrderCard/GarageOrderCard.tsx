@@ -210,7 +210,7 @@ export default function GarageOrderCard({
   const orderId = Number(orderDetail?.gfOrderID);
 
   const { data: garageInfo } = useGetGarageByIdApi({}, { id: garageId });
-  const { data: feedback } = useGetOneFeedback({
+  const { data: feedback, refetch } = useGetOneFeedback({
     queryKey: orderId.toString(),
     id: orderId,
     enabled: !isNaN(orderId),
@@ -321,12 +321,16 @@ export default function GarageOrderCard({
       <Modal
         open={openFeedback}
         footer={null}
-        onCancel={() => setOpenFeedback(false)}
+        onCancel={() => {setOpenFeedback(false);
+        refetch();
+        }}
         title="Đánh giá dịch vụ"
       >
         <FeedbackModal
           gfOrderID={id}
-          onFinish={() => setOpenFeedback(false)}
+          onFinish={() => {setOpenFeedback(false)
+          refetch();
+          }}
           {...(feedback as any)}
         />
       </Modal>
