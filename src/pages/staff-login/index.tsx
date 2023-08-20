@@ -32,7 +32,7 @@ export default function StaffLoginPage() {
           email: data.emailAddress,
           fullName: data.name,
           phone: data.phoneNumber,
-          avatar: null,
+          avatar: data.linkImage,
           role: 'STAFF',
         },
         accessToken: data.accessToken,
