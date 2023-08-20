@@ -119,7 +119,10 @@ export default function GaragesPage() {
         <Input
           placeholder="Tìm kiếm ở đây ..."
           value={keyword}
-          onChange={(e) => setKeyword(e.currentTarget.value)}
+          onChange={(e) => {
+            setKeyword(e.currentTarget.value)
+            pagination.goPage(1);
+            }}
         />
         <Button type="primary" className="min-w-[100px]">
           Tìm
@@ -133,6 +136,7 @@ export default function GaragesPage() {
             onValuesChange={(changesValue) => {
               if (has(changesValue, 'places')) {
                 push({}, undefined, { shallow: true });
+                pagination.goPage(1);
               }
             }}
           >
