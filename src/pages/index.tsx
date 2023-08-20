@@ -90,7 +90,7 @@ export default function HomePage() {
       </section>
 
       <section className="mt-20">
-        <Typography.Title level={2} className="text-center">
+        <Typography.Title level={2} className="text-center mb-20">
           Đề xuất cho bạn
         </Typography.Title>
 
@@ -122,9 +122,9 @@ export default function HomePage() {
                     Dịch vụ sửa chữa ô tô là các thủ tục được thực hiện để sửa
                     hoặc phục hồi xe đang gặp sự cố, hư hỏng về máy móc.
                   </p>
-                  <button className=" text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
+                  {/* <button className=" text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
                     Chi tiết
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <Image src="/repair.png" alt="repair" width={241} height={192} />
@@ -140,9 +140,9 @@ export default function HomePage() {
                     hồi một chiếc xe cũ hoặc bị hư hỏng về tình trạng gần như
                     nguyên bản.
                   </p>
-                  <button className=" text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
+                  {/* <button className=" text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
                     Chi tiết
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <Image
@@ -163,9 +163,9 @@ export default function HomePage() {
                     Dịch vụ bảo dưỡng ô tô là các quy trình định kỳ giúp giữ cho
                     xe hoạt động trơn tru và ngăn ngừa các vấn đề tiềm ẩn.
                   </p>
-                  <button className=" text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
+                  {/* <button className=" text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
                     Chi tiết
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <Image
@@ -187,9 +187,9 @@ export default function HomePage() {
                     cố bất ngờ như hư xăm, xịt lốp, hư khóa, bị ngập xe trời
                     mưa, hư ắc quy, bị tai nạn….
                   </p>
-                  <button className="text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
+                  {/* <button className="text-white mt-3 py-2 px-8 bg-purple-600 rounded-md border-none">
                     Chi tiết
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <Image
