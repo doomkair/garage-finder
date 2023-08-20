@@ -30,9 +30,9 @@ const message = {
 
 export default function ManageGarageTransactionPage() {
   const { query, push } = useRouter();
-  const { garageId, vnp_TransactionStatus } = query as {
+  const { garageId, vnp_ResponseCode } = query as {
     garageId: string;
-    vnp_TransactionStatus: string;
+    vnp_ResponseCode: string;
   };
 
   const { data, isLoading } = useAdminGetRegisteredSubscriptions({
@@ -42,15 +42,15 @@ export default function ManageGarageTransactionPage() {
 
   return (
     <div>
-      {!vnp_TransactionStatus && (
+      {!vnp_ResponseCode && (
         <Typography.Title level={3}>Giao dịch</Typography.Title>
       )}
 
       <Skeleton active loading={isLoading && !isNil(garageId)}>
-        {vnp_TransactionStatus ? (
+        {vnp_ResponseCode ? (
           <Result
-            status={vnp_TransactionStatus === '00' ? 'success' : 'error'}
-            title={get(message, vnp_TransactionStatus)}
+            status={vnp_ResponseCode === '00' ? 'success' : 'error'}
+            title={get(message, vnp_ResponseCode)}
             extra={[
               <Button
                 type="primary"
