@@ -369,6 +369,7 @@ export default function GarageDetailPage() {
                   label="Số điện thoại"
                   name="phone"
                   rules={[requiredRule(), phoneRule()]}
+                  initialValue={user?.phone}
                 >
                   <Input />
                 </Form.Item>
