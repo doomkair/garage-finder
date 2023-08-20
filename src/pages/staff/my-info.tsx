@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { useGetMyStaffInfo, useUpdateMyStaffInfo } from '@/api';
 import { SingleUploadDragger } from '@/components';
 import { LOCATION_CASCADER_OPTIONS } from '@/constants';
+import { useAuthStore } from '@/context';
 import { ManageGarageLayout } from '@/layouts';
 import { requiredRule } from '@/services';
 import { showSuccess } from '@/utils';
@@ -20,6 +21,8 @@ import { showSuccess } from '@/utils';
 export default function StaffMyInfoPage() {
   const [form] = Form.useForm();
 
+  const [, dispatch] = useAuthStore();
+  
   const [isInEditMode, setIsInEditMode] = useState(false);
 
   const { isLoading, refetch, data } = useGetMyStaffInfo({
@@ -62,6 +65,12 @@ export default function StaffMyInfoPage() {
             });
 
             await refetch();
+
+            dispatch({
+              type: 'UPDATE_AVATAR',
+              payload: { linkImage: values?.linkImage },
+            });
+            
             setIsInEditMode(false);
           }}
         >
