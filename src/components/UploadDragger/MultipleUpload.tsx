@@ -88,7 +88,7 @@ export function MultipleUpload({
       fileList={fileList}
     >
       <Button icon={<UploadOutlined />} type="primary">
-        Thêm ảnh
+        Upload
       </Button>
     </Upload>
   );
