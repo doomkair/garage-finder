@@ -16,7 +16,8 @@ export function Footer({ className }: FooterProps) {
         style={{ backgroundImage: `url(${subscribeBg.src})` }}
       >
         <Typography.Text className="text-3xl text-white mb-5">
-          Đăng ký để nhận tin tức mới nhất và ưu đãi & ưu đãi độc quyền
+          Đăng ký để nhận tin tức mới nhất và ưu đãi & ưu đãi độc quyền của
+          Garage Finder
         </Typography.Text>
         <div className="flex gap-2 max-w-4xl w-1/2 shadow bg-white p-3 rounded-lg">
           <Input
